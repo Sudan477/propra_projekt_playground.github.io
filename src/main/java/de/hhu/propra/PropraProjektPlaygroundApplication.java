@@ -1,4 +1,4 @@
-package com.example.demo;
+package de.hhu.propra;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
