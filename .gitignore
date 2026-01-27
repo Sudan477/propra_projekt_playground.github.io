@@ -36,16 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 
-# Abhängigkeiten und Artefakte
-*.jar
-*.war
-*.ear
 
-# Umgebungsvariablen
-.env
-application-local.properties
-application-dev.yml
-
-# Logs
-*.log
-logs/
