@@ -1,9 +1,10 @@
 rootProject.name = 'demo'
 
-include 'application', 'persistence', 'domainmodel', 'domainservices', 'web'
+include 'application', 'persistence', 'domainmodel', 'domainservices', 'web', 'starter'
 
 project(':application').projectDir = file('submodules/application')
 project(':domainmodel').projectDir = file('submodules/domainmodel')
 project(':persistence').projectDir = file('submodules/persistence')
 project(':domainservices').projectDir = file('submodules/domainservices')
 project(':web').projectDir = file('submodules/web')
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geschlossen</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+
+    <h1 class="mt-5">Privater Teil</h1>
+    <p>Hallo <span th:text="${name}">Otto</span></p>
+    <p class="alert alert-danger">Dieser Teil ist nur nach der Anmeldung sichtbar!</p>
+
+    <a href="/public">Zum öffentlichen Teil</a>
+</div>
+</body>
+</html>
