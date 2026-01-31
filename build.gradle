@@ -4,7 +4,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'de.hhu.propra'
+//group = 'de.hhu.propra'
 version = '0.0.1-SNAPSHOT'
 description = 'Demo project for Spring Boot'
 
@@ -14,8 +14,22 @@ java {
 	}
 }
 
-repositories {
-	mavenCentral()
+allprojects {
+	repositories {
+		mavenCentral()
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'io.spring.dependency-management'
+
+	// Das macht die Spring-Versionen überall bekannt
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.boot:spring-boot-dependencies:4.0.1"
+		}
+	}
 }
 
 dependencies {
