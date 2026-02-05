@@ -4,6 +4,12 @@ logging:
       springframework:
         security: info
 
+
+app:
+  security:
+    admins:
+      - 'Sudan477'
+
 spring:
   security:
     oauth2:

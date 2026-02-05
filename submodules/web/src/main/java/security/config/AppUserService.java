@@ -1,5 +1,6 @@
 package security.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -16,18 +17,21 @@ import java.util.Set;
 @Component
 public class AppUserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
+    @Value("app.security.admins")
+    private Set<String> admins;
+
     private final DefaultOAuth2UserService defaultService = new DefaultOAuth2UserService();
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User originalUser = defaultService.loadUser(userRequest);
         Set<GrantedAuthority> authorities = new HashSet<>(originalUser.getAuthorities());
-        if ("foo123".equals(originalUser.getAttribute("login"))) {
-            authorities.add(new SimpleGrantedAuthority("ADMIN"));
+        for (String admin : admins) {
+            if (admin.equals(originalUser.getAttribute("login"))) {
+                authorities.add(new SimpleGrantedAuthority("ADMIN"));
+            }
         }
-        System.out.println("HIER");
-        System.out.println("authorities: " + authorities);
-        //System.out.println(authorities.toString());
+
         return new DefaultOAuth2User(authorities, originalUser.getAttributes(), "id");
     }
 }
